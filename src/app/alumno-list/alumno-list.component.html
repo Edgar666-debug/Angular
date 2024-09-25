@@ -1,0 +1,33 @@
+
+
+ <h2 class="text-center mb-4">Listado de Alumnos</h2>
+
+ <div class="text-end md-1">
+  <button class="btn btn-primary" routerLink="/add-alumno">Añadir Alumno</button>
+ </div>
+
+ <table>
+   <thead>  
+     <tr>
+       <th>Id</th>
+       <th>Nombre</th>
+       <th>Apellido</th>
+       <th>Matricula</th>
+       <th>Acciones</th>
+     </tr>
+   </thead>
+   <tbody>
+    @for (alumno of Alumnos; track alumno.id) {
+    <tr >
+        <td>{{alumno.id}}</td>
+        <td>{{alumno.nombre}}</td>
+        <td>{{alumno.apellidos}}</td>
+        <td>{{alumno.matricula}}</td>
+        <td>
+          <button class="btn btn-danger" (click)="borrarAlumno(alumno)">Borrar</button>
+          <button class="btn btn-warning" [routerLink]="['/update-alumno',alumno.id]">Editar</button>     
+           </td>
+    </tr>
+      }
+   </tbody>
+ </table>

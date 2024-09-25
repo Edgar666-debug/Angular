@@ -1,0 +1,54 @@
+
+<h2 class="text-center mb-4">
+    @if (Alumno) {
+        Actualizar
+    }@else {
+        Nuevo
+    }
+        Alumno</h2>
+<div class="container">
+    @if (form) {
+        
+    <form [formGroup]="form" (ngSubmit)="saveAlumno()">
+
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>   
+            <input type="text" class="form-control" placeholder="Nombre" id="nombre" name="nombre"
+            formControlName="nombre">
+            @if(form.get('nombre')?.hasError('required')) {
+                <p class="invalid-feedback d-block">*</p>
+            } 
+        </div>
+
+        <div class="mb-3">
+            <label for="apellidos" class="form-label">Apellidos</label>
+            <input type="text" class="form-control" placeholder="Apellidos" id="apellidos" name="apellidos"
+            formControlName="apellidos">
+            @if(form.get('apellidos')?.hasError('required')) {
+                <p class="invalid-feedback d-block">*</p>
+            } 
+        </div>
+
+        <div class="mb-3">
+            <label for="matricula" class="form-label">Matricula</label>
+            <input type="text" class="form-control" placeholder="Matricula" id="matricula" name="matricula"
+            formControlName="matricula">
+            @if(form.get('matricula')?.hasError ('required')) {
+                <p class="invalid-feedback d-block">*</p>
+            } 
+        </div>
+
+        <div class="text-end">
+            <button type="submit" class="btn btn-danger" routerLink="/">Cancelar</button>
+            <button type="submit" class="btn btn-primary ms-2">
+                @if(Alumno) {
+                    Actualizar
+                }@else {
+                    Crear
+                }
+                Alumno</button>
+        </div>
+ 
+    </form>
+    }
+</div>
