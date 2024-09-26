@@ -3,6 +3,8 @@ import { AlumnoServiceService } from '../services/alumno-service.service';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { alumno } from '../models/alumno.interface';
+import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-alumno',
@@ -28,7 +30,7 @@ export default class AddAlumnoComponent implements OnInit {
         (alumno) => {
         this.Alumno = alumno;
         this.form = this.fb.group({
-          id: [alumno.id],
+          id: [alumno.id] ,
           nombre: [alumno.nombre, [Validators.required]],
           apellidos: [alumno.apellidos, [Validators.required]],
           matricula: [alumno.matricula, [Validators.required]],
@@ -36,6 +38,7 @@ export default class AddAlumnoComponent implements OnInit {
       });
     } else {
       this.form = this.fb.group({
+        id: [Math.floor(Math.random() * 100)],
         nombre: ['', [Validators.required]],
         apellidos: ['', [Validators.required]],
         matricula: ['', [Validators.required]],
@@ -48,19 +51,22 @@ export default class AddAlumnoComponent implements OnInit {
         return;
       }
       const alumnoForm = this.form!.value;
+      let request: Observable<alumno>; 
       if (this.Alumno) {
-        this.alumnoService.editarAlumno(this.Alumno.id, alumnoForm).subscribe(
-          () => {
-            this.router.navigate(['/']);
-            window.alert('Alumno actualizado');
-          });
+        request = this.alumnoService.editarAlumno(this.Alumno.id, alumnoForm);
       }else {
-        this.alumnoService.crearAlumno(alumnoForm).subscribe(
-          () => {
-            this.router.navigate(['/']);
-            window.alert('Alumno creado');
-          });
+        request = this.alumnoService.crearAlumno(alumnoForm);
       }
+      
+      request.subscribe({ 
+        next: () => {
+        this.router.navigate(['/']);
+        Swal.fire('Alumno guardado', '', 'success');
+      },
+      error: response => {
+        Swal.fire('Error', response.error.message, 'error');
+      }
+    });
     }
 
   }

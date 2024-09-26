@@ -6,7 +6,7 @@
         Nuevo
     }
         Alumno</h2>
-<div class="container">
+<div class="container-lg ">
     @if (form) {
         
     <form [formGroup]="form" (ngSubmit)="saveAlumno()">
@@ -22,7 +22,9 @@
 
         <div class="mb-3">
             <label for="apellidos" class="form-label">Apellidos</label>
-            <input type="text" class="form-control" placeholder="Apellidos" id="apellidos" name="apellidos"
+            <input type="text" class="form-control" placeholder="Apellidos" id="apellidos"
+
+             name="apellidos"
             formControlName="apellidos">
             @if(form.get('apellidos')?.hasError('required')) {
                 <p class="invalid-feedback d-block">*</p>
@@ -31,8 +33,8 @@
 
         <div class="mb-3">
             <label for="matricula" class="form-label">Matricula</label>
-            <input type="text" class="form-control" placeholder="Matricula" id="matricula" name="matricula"
-            formControlName="matricula">
+            <input type="text" class="form-control" placeholder="Matricula" id="matricula"
+             name="matricula" formControlName="matricula">
             @if(form.get('matricula')?.hasError ('required')) {
                 <p class="invalid-feedback d-block">*</p>
             } 
