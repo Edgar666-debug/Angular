@@ -6,11 +6,12 @@
   <button class="btn btn-primary" routerLink="/add-alumno">Añadir Alumno</button>
  </div>
 
-<div class="form-group flex-nowrap"> 
-  <span class="icon"><i class="bi bi-search"></i></span>
-  <input class="form" type="text" placeholder="Buscador" >
+<div class="form"> 
+  <button class="icon"><i class=" bi bi-search"></i>
+  <input class="form" type="search" name="search"  placeholder="Buscador"/></button>
+  
 </div>
-
+ 
  <table>
    <thead>  
      <tr>
@@ -22,6 +23,7 @@
      </tr>
    </thead>
    <tbody>
+  
     @for (alumno of Alumnos; track alumno.id) {
     <tr >
         <td>{{alumno.id}}</td>

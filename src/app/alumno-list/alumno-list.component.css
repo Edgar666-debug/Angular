@@ -11,9 +11,20 @@ html{
 }
 
 input{
-    margin: 3px;
-    padding: 3px;
+    height: 25px;
+    border: none;
+    margin: 4px;
+}
+
+i{
+    font-size: 20px;
+    color: rgb(26, 3, 88);
+    justify-content: center;
+}
+
+.icon{
     border-radius: 5px;
+    background-color: #ffffff;
 }
 
 table{
@@ -29,7 +40,7 @@ table{
     box-shadow: 0 0 20px rgba(185, 41, 41, 0.15);
 }
 
-button{
+.btn{
     margin: 5px;
 }
 

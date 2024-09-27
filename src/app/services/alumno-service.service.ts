@@ -12,6 +12,10 @@ export class AlumnoServiceService {
     return this.http.get<alumno>('http://localhost:9000/alumnos/' + id);
   }
 
+  searchBYName(name: string) {
+    return this.http.get<alumno[]>('http://localhost:9000/alumnos/consultar/' + name);
+  }
+
   listarAlumnos() {
     return this.http.get<alumno[]>('http://localhost:9000/alumnos');
   }
@@ -30,6 +34,7 @@ export class AlumnoServiceService {
 
 }
 
+//Endpoint de SPRING BOOT
 //http://localhost:8080/api/
 //http://localhost:8080/api/alumnos
 //http://localhost:8080/api

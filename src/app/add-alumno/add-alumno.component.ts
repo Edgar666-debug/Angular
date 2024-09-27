@@ -45,6 +45,8 @@ export default class AddAlumnoComponent implements OnInit {
       });
     }
     }
+
+
     
     saveAlumno() {
       if(this.form?.invalid) {
