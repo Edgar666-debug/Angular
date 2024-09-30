@@ -10,20 +10,29 @@ html{
     background-color: #104479;
 }
 
-input{
-    height: 25px;
-    border: none;
-    margin: 4px;
+.input-group{
+    margin: auto;
+    border-radius: 10px;
+    align-items: center;
+    position: relative;
+}
+.input{
+    text-align: center;
+    right: auto;
+    font-size: 16px;
 }
 
+
 i{
-    font-size: 20px;
+    font-size: 17px;
     color: rgb(26, 3, 88);
-    justify-content: center;
+    position: absolute;
+    left: 10px;
 }
 
 .icon{
     border-radius: 5px;
+    position: absolute;
     background-color: #ffffff;
 }
 

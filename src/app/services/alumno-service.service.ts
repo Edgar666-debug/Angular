@@ -7,29 +7,30 @@ import { alumno } from '../models/alumno.interface';
 })
 export class AlumnoServiceService {
   private http = inject(HttpClient);
+  private url = 'http://localhost:9000/alumnos';
 
   buscarAlumno(id: number) {
-    return this.http.get<alumno>('http://localhost:9000/alumnos/' + id);
+    return this.http.get<alumno>(this.url + '/' + id);
   }
 
   searchBYName(name: string) {
-    return this.http.get<alumno[]>('http://localhost:9000/alumnos/consultar/' + name);
+    return this.http.get<alumno[]>(this.url + '/consultar/' + name);
   }
 
   listarAlumnos() {
-    return this.http.get<alumno[]>('http://localhost:9000/alumnos');
+    return this.http.get<alumno[]>(this.url);
   }
 
   crearAlumno(alumno: alumno) {
-    return this.http.post<alumno>('http://localhost:9000/alumnos', alumno);
+    return this.http.post<alumno>(this.url, alumno);
   }
 
   editarAlumno(id: number, alumno: alumno) {
-    return this.http.put<alumno>('http://localhost:9000/alumnos/' + id, alumno);
+    return this.http.put<alumno>(this.url + '/' + id, alumno);
   }
 
   borrarAlumno(id: number) {
-    return this.http.delete<void>('http://localhost:9000/alumnos/' + id);
+    return this.http.delete<void>(this.url + '/' + id);
   }
 
 }

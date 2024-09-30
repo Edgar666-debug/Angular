@@ -6,10 +6,11 @@
   <button class="btn btn-primary" routerLink="/add-alumno">Añadir Alumno</button>
  </div>
 
-<div class="form"> 
-  <button class="icon"><i class=" bi bi-search"></i>
-  <input class="form" type="search" name="search"  placeholder="Buscador"/></button>
-  
+<div class="content"> 
+  <div class="input-group">
+    <input class="input" type="text" name="search" [(ngModel)]="search" (input)="filtrarAlumnos()"  placeholder="Buscador"/>
+    <i class="icon bi bi-search"></i>
+  </div>
 </div>
  
  <table>
@@ -24,8 +25,8 @@
    </thead>
    <tbody>
   
-    @for (alumno of Alumnos; track alumno.id) {
-    <tr >
+    @for (alumno of alumnosFiltrados; track alumno.id) {
+    <tr>
         <td>{{alumno.id}}</td>
         <td>{{alumno.nombre}}</td>
         <td>{{alumno.apellidos}}</td>
