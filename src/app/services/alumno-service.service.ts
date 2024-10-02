@@ -1,36 +1,37 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { alumno } from '../models/alumno.interface';
-
+import { environment } from '../../../environment';
 @Injectable({
   providedIn: 'root'
 })
 export class AlumnoServiceService {
   private http = inject(HttpClient);
-  private url = 'http://localhost:9000/alumnos';
+  private apiUrl = environment.apiUrl;
+  
 
   buscarAlumno(id: number) {
-    return this.http.get<alumno>(this.url + '/' + id);
+    return this.http.get<alumno>(this.apiUrl + '/' + id);
   }
 
   searchBYName(name: string) {
-    return this.http.get<alumno[]>(this.url + '/consultar/' + name);
+    return this.http.get<alumno[]>(this.apiUrl + '/consultar/' + name);
   }
 
   listarAlumnos() {
-    return this.http.get<alumno[]>(this.url);
+    return this.http.get<alumno[]>(this.apiUrl);
   }
 
   crearAlumno(alumno: alumno) {
-    return this.http.post<alumno>(this.url, alumno);
+    return this.http.post<alumno>(this.apiUrl, alumno);
   }
 
   editarAlumno(id: number, alumno: alumno) {
-    return this.http.put<alumno>(this.url + '/' + id, alumno);
+    return this.http.put<alumno>(this.apiUrl + '/' + id, alumno);
   }
 
   borrarAlumno(id: number) {
-    return this.http.delete<void>(this.url + '/' + id);
+    return this.http.delete<void>(this.apiUrl + '/' + id);
   }
 
 }
