@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { alumno } from '../models/alumno.interface';
-import { environment } from '../../../environment';
+import { environment } from '../../environments/environment';
+
+
 @Injectable({
   providedIn: 'root'
 })
