@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://angular-8pq.pages.dev'
+    apiUrl: 'https://2511-189-203-99-33.ngrok-free.app'
 }
