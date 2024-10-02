@@ -41,7 +41,7 @@ export default class AddAlumnoComponent implements OnInit {
         id: [Math.floor(Math.random() * 100)],
         nombre: ['', [Validators.required]],
         apellidos: ['', [Validators.required]],
-        matricula: ['', [Validators.required]],
+        matricula: ['', [Validators.required, Validators.pattern('[0-9]{7}')]],
       });
     }
     }
@@ -70,5 +70,4 @@ export default class AddAlumnoComponent implements OnInit {
       }
     });
     }
-
   }

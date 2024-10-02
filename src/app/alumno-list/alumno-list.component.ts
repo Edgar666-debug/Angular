@@ -17,7 +17,7 @@ export default class AlumnoListComponent implements OnInit {
   private alumnoService = inject(AlumnoServiceService);
 
   Alumnos: alumno[] = [];
-  alumnosFiltrados: alumno[] = [];  // Lista filtrada de alumnos
+  alumnosFiltrados: alumno[] = [];
   search: string = '';
 
   ngOnInit(): void {
@@ -32,18 +32,14 @@ export default class AlumnoListComponent implements OnInit {
       });
   }
 
+
   filtrarAlumnos() {
-    this.alumnosFiltrados = this.search
-      ? this.Alumnos.filter(alumno => {
-          const searchValue = this.search.toLowerCase();
-          return (
-            alumno.nombre.toLowerCase().includes(searchValue) ||
-            alumno.apellidos.toLowerCase().includes(searchValue) ||
-            alumno.matricula.toLowerCase().includes(searchValue)
-          );
-        })
-      : this.Alumnos;
+    const searchValue = this.search?.toLowerCase() || '';
+    this.alumnosFiltrados = this.Alumnos.filter(({ nombre, apellidos, matricula }) =>
+      [nombre, apellidos, matricula].some(campo => campo.toLowerCase().includes(searchValue))
+    );
   }
+  
 
 
 

@@ -6,17 +6,15 @@
         Nuevo
     }
         Alumno</h2>
-        <!--p>d-flex justify-content-center</p-->
 <div class="container ">
     @if (form) {
-        <!--a>[(ngModel)]="search" | filter: search</a!-->
     <form [formGroup]="form" (ngSubmit)="saveAlumno()">
 
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre</label>   
             <input type="text" class="form-control" placeholder="Nombre" id="nombre" name="nombre"
             formControlName="nombre">
-            @if(form.get('nombre')?.hasError('required')) {
+            @if(form.get('nombre')?.hasError('required') && form.get('nombre')?.touched) {
                 <p class="invalid-feedback d-block">*</p>
             } 
         </div>
@@ -27,7 +25,7 @@
 
              name="apellidos"
             formControlName="apellidos">
-            @if(form.get('apellidos')?.hasError('required')) {
+            @if(form.get('apellidos')?.hasError('required') && form.get('apellidos')?.touched) {
                 <p class="invalid-feedback d-block">*</p>
             } 
         </div>
@@ -36,14 +34,16 @@
             <label for="matricula" class="form-label">Matricula</label>
             <input type="text" class="form-control" placeholder="Matricula" id="matricula"
              name="matricula" formControlName="matricula">
-            @if(form.get('matricula')?.hasError ('required')) {
+            @if(form.get('matricula')?.hasError ('required') && form.get('matricula')?.touched) {
                 <p class="invalid-feedback d-block">*</p>
-            } 
+            } @else if (form.get('matricula')?.hasError('pattern')) {
+                <p class="invalid-feedback d-block">Solo se permiten 7 digitos</p>
+            }
         </div>
 
         <div class="text-end">
             <button type="submit" class="btn btn-danger" routerLink="/">Cancelar</button>
-            <button type="submit" class="btn btn-primary ms-2">
+            <button type="submit" class="btn btn-primary ms-2" [disabled]="form.invalid">
                 @if(Alumno) {
                     Actualizar
                 }@else {
