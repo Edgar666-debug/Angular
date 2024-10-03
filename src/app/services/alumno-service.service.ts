@@ -37,10 +37,3 @@ export class AlumnoServiceService {
   }
 
 }
-
-//Endpoint de SPRING BOOT
-//http://localhost:8080/api/
-//http://localhost:8080/api/alumnos
-//http://localhost:8080/api
-//http://localhost:8080/api/
-//http://localhost:8080/api/
