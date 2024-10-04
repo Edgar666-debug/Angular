@@ -28,6 +28,7 @@ export default class AlumnoListComponent implements OnInit {
     this.alumnoService.listarAlumnos().subscribe( 
       (alumnos) => {
         this.Alumnos = alumnos;
+        console.log(alumnos);
         this.alumnosFiltrados = alumnos;
       });
   }
